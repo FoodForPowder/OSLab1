@@ -26,7 +26,7 @@ trap cleanup_function EXIT HUP INT QUIT PIPE TERM
 
 copy_source="$(cp "$target" "$folder_temporary")"
 current_directory=$(pwd)
-go_temp_direct="$(cd "$folder_temporary")"
+cd "$folder_temporary"
 
 file_extension="${target##*.}"
 
@@ -39,8 +39,7 @@ echo "Unsupported file type"
 exit 1
 fi
 
-move_output="$(mv "$complete_name" "$current_directory")"
-get_back="$(cd "$current_directory")"
+mv "$complete_name" "$current_directory"
 
 echo "Successfully compiled: $complete_name"
 
