@@ -3,14 +3,14 @@
 target=$1
 folder_temporary=$(mktemp -d)
 
-if [[ -z "$target" ]]; then
+if [ -z "$target" ]; then
 echo "Enter the filename. For example, $0 program1.cpp"
 exit 1
 fi
 
 complete_name="$(grep -i "Output:" "$target" | cut -d ':' -f2- | tr -d '[:space:]/')"
 
-if [[ -z "$complete_name" ]]; then
+if [ -z "$complete_name" ]; then
 echo "Name for output file is missing or not determined."
 exit 1
 fi
@@ -32,7 +32,7 @@ file_extension="${target##*.}"
 
 declare -A compiler=( ["c"]="gcc" ["cpp"]="g++" )
 
-if [[ ${compiler[$file_extension]} ]]; then
+if [ ${compiler[$file_extension]} ]; then
 ${compiler[$file_extension]} "$target" -o "$complete_name"
 else
 echo "Unsupported file type"
