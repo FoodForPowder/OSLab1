@@ -24,7 +24,7 @@ exit $rc
 
 trap cleanup_function EXIT HUP INT QUIT PIPE TERM
 
-copy_source="$(cp "$target" "$folder_temporary")"
+cp "$target" "$folder_temporary"
 current_directory=$(pwd)
 cd "$folder_temporary"
 
